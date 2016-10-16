@@ -1,0 +1,13 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+/* TEAM */
+  Developer: Michael Krishtopa <theo at heddex dot biz>
+  Site: www.heddex.biz
+  Twitter: @mkrishtopa
+  Location: Ukraine
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: Modernizr, jQuery
+  CMS: Plone 4 (www.plone.org)

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+     css:if-content="#portal-column-content">
+    
+    <!-- The default theme, used for standard Plone web pages -->
+    <theme href="index.html" />
+    <notheme if-path="@@manage-viewlets" />
+    <notheme if-path="at_babel_edit"/> 
+
+    <!-- Rules applying to a standard Plone web page -->
+    <rules>
+
+        <!-- Header -->
+        <drop css:theme="meta[http-equiv='Content-Type']" />
+        <drop css:content="meta[name='viewport']" />
+        <drop css:theme="link[href$='dropdown.css']" />
+<!--        <drop css:content="link[href$='columns.css']" />-->
+<!--        <drop css:content="link[href$='portlets.css']" />-->
+        <drop css:content="link[href$='discussion.css']" />
+        <drop css:content="link[href$='ploneKss.css']" />
+        <drop css:content="link[href$='base.css']" />
+        <drop css:content="link[href$='mobile.css']" />
+        <drop css:content="link[href$='authoring.css']" />
+        <drop css:content="link[href$='controlpanel.css']" />
+        <drop css:content="link[href$='deprecated.css']" />
+        <drop css:content="link[href$='navtree.css']" />
+        <drop css:content="link[href$='invisibles.css']" />
+        <drop css:content="link[href$='forms.css']" />
+        <drop css:content="link[href$='print.css']" />.
+        <drop css:content="link[href*='base-cachekey']" />
+        <drop css:content="link[href$='favicon.ico']" />
+        <before content="/html/head/meta" css:theme="meta[name='viewport']" />
+        <before content="/html/head/base" theme="/html/head/title" />
+        <replace theme='/html/head/title' content='/html/head/title' />
+        <after css:content="head link:not([href*='ploneCustom'])" theme="/html/head/title" />
+        <after content="/html/head/style | /html/head/script" theme="/html/head/title" />
+        <after css:content="head link[href*='ploneCustom']" theme-children="/html/head" />
+
+        <theme href="index.html" />
+        <notheme if-path="presentation_view"/> 
+        <notheme if-path="source_editor.htm"/> 
+        <notheme if-path="ploneimage.htm"/> 
+        <notheme if-path="anchor.htm"/> 
+        <notheme if-path="table.htm"/> 
+        <notheme if-path="attributes.htm"/>
+
+        <!-- BODY THEME (inject body classes from Plone into the theme) --> 
+        <copy attributes="*" css:theme="body" css:content="body" />
+
+        <drop css:content=".portletTopLeft" />
+        <drop css:content=".portletTopRight" />
+        <drop css:content=".portletBottomLeft" />
+        <drop css:content=".portletBottomRight" />
+
+        <drop css:content="#viewlet-above-content" />
+        
+        <copy attributes="href"
+            css:content="#portal-logo"
+            css:theme=".portal-logo"
+            />
+
+        <replace
+            css:theme-children="article.portal-column-content"
+            css:content-children="#portal-column-content"
+            />
+
+        <strip css:content=".portletNews .portletHeader a" />
+        <drop css:content=".portletNews .portletFooter" />
+        <strip css:content="#portal-column-one > div[id*='portletwrapper-']" />
+        <replace
+            css:theme-children=".portal-column-left"
+            css:content-children="#portal-column-one"
+            />
+        <replace
+            css:theme-children=".portal-column-right"
+            css:content-children="#portal-column-two"
+            />
+            
+        <after
+            css:content="#portal-languageselector"
+            css:theme="header.portal-header .slogan"
+            />
+
+    </rules>
+
+</rules>
